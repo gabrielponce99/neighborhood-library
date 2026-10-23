@@ -42,4 +42,21 @@ public class BookApp {
 
 
     }
+
+
+    public static void showAvailable(Book[] books) {
+        for (Book book : books) {
+            if (!book.isCheckedOut()) {
+                System.out.println(book.getTitle());
+            }
+        }
+    }
+
+
+//    public static void checkOut(Book[] books) {
+//        for (Book book : books) {
+//            if ()
+//        }
+//    }
+
 }
