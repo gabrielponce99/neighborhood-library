@@ -38,22 +38,51 @@ public class BookApp {
             System.out.println("Enter number:");
             command = scanner.nextInt();
             scanner.nextLine();
+
+        switch (command) {
+            case 1:
+                showAvailable(books, scanner);
+                break;
+            case 2:
+                break;
+        }
         }
 
     }
 
-    public static void showAvailable(Book[] books) {
-        for (Book book : books) {
-            if (!book.isCheckedOut()) {
-                System.out.println(book.getTitle());
+    public static void showAvailable(Book[] books, Scanner scanner) {
+        while (true) {
+            System.out.println("---- Available Books ----");
+            boolean anyAvailable = false;
+
+            for (Book book : books) {
+                if (!book.isCheckedOut()) {
+                    System.out.println(book);
+                    anyAvailable = true;
+                }
             }
+
+            if (!anyAvailable) {
+                System.out.println("No books available");
+                return;
+            }
+
+            System.out.println("\nEnter a book ID to check out, or type 'exit' to go back: ");
+            String input = scanner.nextLine().trim().equalsIgnoreCase();
+
+            if (input.equalsIgnoreCase("exit")) {
+                return;
+            }
+
+
         }
     }
+
 
     public static void checkOut(Book[] books) {
         for (Book book : books) {
             if (book.isCheckedOut()) {
-                System.out.println(book.getTitle());
+                System.out.println(book);
             }
         }
     }
